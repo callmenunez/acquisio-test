@@ -1,9 +1,13 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.set('view engine', 'nunjucks');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
