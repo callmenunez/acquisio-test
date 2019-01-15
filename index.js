@@ -1,3 +1,4 @@
+'use strict'
 const express = require('express');
 const nunjucks = require('nunjucks');
 const port = process.env.PORT || 3000;
@@ -8,7 +9,9 @@ app.set('view engine', 'nunjucks');
 app.use('/public', express.static('public'));
 
 app.use('/', function (req, res) {
-  return res.render('views/index.html');
+  return res.render('views/index.html', {
+    title: 'Acquisio Test'
+  });
 });
 
 // Nunjucks Configurations
