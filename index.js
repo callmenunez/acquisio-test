@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.set('view engine', 'nunjucks');
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', function (req, res) {
   return res.render('views/index.html');
