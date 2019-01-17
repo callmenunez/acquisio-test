@@ -34,7 +34,7 @@ exports.databaseRetrieve = (req, res, next) => {
         res.screenShareType = '';
         res.screenShareCode = '';
         res.property = '';
-        res.customCode = 'asdf';
+        res.customCode = '';
       }
       else {
         res.repName = data.Items[0].repName;
