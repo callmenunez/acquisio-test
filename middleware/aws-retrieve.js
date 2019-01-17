@@ -35,7 +35,6 @@ exports.databaseRetrieve = (req, res, next) => {
         res.screenShareCode = '';
         res.property = '';
         res.customCode = '';
-        console.log(res.customCode);
       }
       else {
         res.repName = data.Items[0].repName;
