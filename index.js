@@ -46,7 +46,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
   //   next();
   // }
   
-  console.log(res.customCode);
+  // console.log(res.customCode);
 
   app.use(logResponseBody);
 
