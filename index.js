@@ -48,7 +48,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
   
   app.use(logResponseBody);
 
-    res.render('views/index.html', console.log(res.customCode), {
+    res.render('views/index.html', {
       metaDescription: '',
       title: 'customeCode Acquisio Test',
       repName: res.repName,
