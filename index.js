@@ -47,7 +47,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
   // }
   
   console.log(res.customCode);
-  
+
   app.use(logResponseBody);
 
     res.render('views/index.html', {
@@ -65,7 +65,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
       screenShareCode: res.screenShareCode,
       property: res.property,
       customCode: res.customCode,
-      referer: req.headers.referer,
+      referer: req.headers.referer
     });
 });
 
