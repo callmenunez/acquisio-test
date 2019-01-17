@@ -56,7 +56,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
     };
     next();
   }
-  
+
   app.use(logResponseBody);
 
     res.render('views/index.html', {
@@ -76,6 +76,7 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
       customCode: res.customCode,
       referer: req.headers.referer
     });
+    console.log(res.customCode);
 });
 
 app.use('/', function (req, res) {
