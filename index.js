@@ -10,33 +10,7 @@ const app = express();
 
 app.set('view engine', 'nunjucks');
 
-//sets the static route for images, css files, or anything else in the public folder
 app.use('/public', express.static('public'));
-
-// app.use('/success', awsSave, function(req, res, next) {
-//   const brandDomain = req.headers.host;
-  
-//   if (brandDomain.indexOf('lbwdemo.ca') >= 0) {
-//     res.render('views/lbw-ca-main-pages/success/index.html', {
-//       className: 'success',
-//       metaDescription: '',
-//       title: 'Leads By Web Demo',
-//       customCode: res.customCode,
-//       customerName: res.customerName,
-//       brandDomain: brandDomain
-//     });
-//   }
-//   else if (brandDomain.indexOf('leadstreamdemo') >= 0) {
-//     res.render('views/leadstream-main-pages/success/index.html', {
-//       className: 'success',
-//       metaDescription: '',
-//       title: 'Lead Stream Demo',
-//       customCode: res.customCode,
-//       customerName: res.customerName,
-//       brandDomain: brandDomain
-//     });
-//   }
-// });
 
 app.use('/:customCode', awsRetrieve, function(req, res, next) {
   function logResponseBody(req, res, next) {
@@ -76,7 +50,6 @@ app.use('/:customCode', awsRetrieve, function(req, res, next) {
       customCode: res.customCode,
       referer: req.headers.referer
     });
-    console.log(res.customCode);
 });
 
 app.use('/', function (req, res) {
