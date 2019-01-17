@@ -3,6 +3,7 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const port = process.env.PORT || 3000;
 
+const awsSave = require('./middleware/aws-save').middlewareStack;
 const awsRetrieve = require('./middleware/aws-retrieve').middlewareStack;
 
 const app = express();
@@ -11,6 +12,20 @@ app.set('view engine', 'nunjucks');
 
 //sets the static route for images, css files, or anything else in the public folder
 app.use('/public', express.static('public'));
+
+app.use('/success', awsSave, function(req, res, next) {
+  const brandDomain = req.headers.host;
+  if (brandDomain.indexOf('leadstreamdemo') >= 0) {
+    res.render('views/success/index.html', {
+      className: 'success',
+      metaDescription: '',
+      title: 'Lead Stream Demo',
+      customCode: res.customCode,
+      customerName: res.customerName,
+      brandDomain: brandDomain
+    });
+  }
+});
 
 app.use('/:customCode', awsRetrieve, function(req, res, next) {
   function logResponseBody(req, res, next) {
